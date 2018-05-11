@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block script %}
+    <script type="text/javascript" src="{% static 'tiny_mce/tiny_mce.js' %}"></script>
+    <script type="text/javascript">
+    tinyMCE.init({
+        'mode':'textareas',
+        'theme':'advanced',
+        'width':400,
+        'height':100
+    });
+    </script>
+{% endblock %}
+{% block content %}
+    <form action="{% url 'article:publish' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="hname" id="">
+        <br>
+        <textarea name="hcontent" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}

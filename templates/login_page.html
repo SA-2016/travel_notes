@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'user:login_page' %}" method="POST" name="登陆" id="登陆">欢迎回来
+{% csrf_token %}
+
+    {{ obj.as_p }}
+{#  <p> 邮箱：#}
+{#    <input type="text" name="textfield">#}
+{#  </p>#}
+{#  <p>密码：#}
+{#    <input type="text" name="textfield2">#}
+{#  </p>#}
+  <p>
+      <input type="submit" name="submit" value="提交">
+      <a name="regis" href="{% url 'user:register_page' %}">转到注册</a>
+
+  </p>
+</form>
+{% endblock %}

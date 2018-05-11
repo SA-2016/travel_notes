@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+
+      <div class="starter-template">
+              <h1>{{ foo.title }}</h1>
+
+              <a class="lead" href="{% url 'user:user_info' foo.writer_id %}">{{ foo.writer }}</a>
+              <p>{{ foo.body|safe }}</p>
+
+
+
+      </div>
+
+    </div><!-- /.container -->
+{% endblock %}

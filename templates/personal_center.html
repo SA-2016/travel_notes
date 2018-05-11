@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ user_name }}</h1>
+    <h2>个人信息</h2>
+        <p>年龄：{{ user_age }}</p>
+        <p>邮箱：{{ email }}</p>
+        <p>上次登录时间：{{ last_login_time }}</p>
+        <p>注册时间：{{ register_time }}</p>
+    <h2>作品集({{ art_num }})</h2>
+        {% for foo in art %}
+            <ul><a href="{% url 'article:id' foo.id %}">《{{ foo.title }}》</a>共{{ foo.art_pop }}赞,
+                作于{{ foo.publishTime }},版权：
+                {% if foo.is_copyright %}
+                    受保护
+                {% else %}
+                    开放
+                {% endif %}
+                </ul>
+
+        {% endfor %}
+
+    <h2>赞赏集({{ like_num }})</h2>
+        {% for foo in like_art %}
+            <ul>点赞文章<a href="{% url 'article:id' foo.id %}">《{{ foo.title }}》</a>于{{ foo.like_time }}</ul>
+        {% endfor %}
+        <h5><a href="{% url 'operation:exit' %}">退出登陆</a></h5>
+{% endblock %}

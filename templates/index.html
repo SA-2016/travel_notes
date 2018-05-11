@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>最热文章</h1>
+          {% for foo in listPop %}
+
+            <a class="lead" href="{% url 'article:id' foo.id %}">{{ foo.title }}</a>
+            <p>{{ foo.writer }}</p>
+
+          {% endfor %}
+      </div>
+
+    </div><!-- /.container -->
+{% endblock %}

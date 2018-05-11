@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'user:register' %}" method="POST" name="注册" id="注册">欢迎加入捕手
+{% csrf_token %}
+
+    {{ obja.as_p }}
+{#  <p> 邮箱：#}
+{#    <input type="text" name="textfield">#}
+{#  </p>#}
+{#  <p>密码：#}
+{#    <input type="text" name="textfield2">#}
+{#  </p>#}
+  <p>
+      <input type="submit" name="submit" value="提交">
+      <a name="login" href="{% url 'user:login_page' %}">转至登陆</a>
+  </p>
+</form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block script %}
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+{#$.ajaxSetup({#}
+{#　　data: {csrfmiddlewaretoken: '{{ csrf_token }}' }#}
+{# });#}
+$(function(){
+    $("#sys").click(function(){
+        $.ajax({
+          type: 'POST',//提交方式 post 或者get
+          url: 'http://127.0.0.1:8000/operation/like/',//提交到那里 后他的服务
+          data: {
+              'art_id': {{ art.id }},
+              'csrfmiddlewaretoken': '{{ csrf_token }}'
+          },//提交的参数
+          success:function(json_key){
+              document.getElementById('change_like').value = json_key.key;
+                },
+          error:function(){
+                alert('网络不畅');
+                }
+});
+
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+      <div class="starter-template">
+      <h1>{{ art.title }}</h1>
+
+      <a class="lead" href="{% url 'user:user_info' art.writer_id %}">{{ art.writer }}</a>
+      <p>{{ art.body|safe }}</p>
+      <br>
+      {% if like %}
+          <input  id="sys" type="button" value="已经赞过啦~,点击消赞" name="'change_like'">
+      {% else %}
+          <input  id="sys" type="button" value="文章不错，点个赞吧！" name="'change_like'">
+      {% endif %}
+
+      </div>
+
+    </div><!-- /.container -->
+{% endblock %}

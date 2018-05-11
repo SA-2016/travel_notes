@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>创作者信息</h1>
+
+            <p class="lead">作者：{{ writer_info.name }}</p>
+            <p class="lead">作品数：{{ art_num}}</p>
+            <p>作品：</p>
+            {% for art in art_list %}
+                <a class="lead" href="{% url 'article_id' art.id %}">{{ art.title }}</a><br>
+            {% endfor %}
+
+      </div>
+
+    </div><!-- /.container -->
+{% endblock %}
