@@ -6,7 +6,7 @@ from  django.contrib.auth.hashers import make_password,check_password
 from datetime import datetime
 
 
-from travel_notes.function import *
+from travel_notes.tasks import *
 from .models import User
 from . import form
 from EmailVerifyRecord.views import send_register_email

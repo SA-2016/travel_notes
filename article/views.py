@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 
 
-from travel_notes.function import *
+from travel_notes.tasks import *
 from operation.models import Like
 
 # Create your views here.

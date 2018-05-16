@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tinymce',
     'EmailVerifyRecord',
     'crispy_forms',
+    'djcelery'
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,16 @@ EMAIL_FROM = "xxxxx@xx.com"        # 邮箱来自
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # email后端
 EMAIL_USE_TLS = False   # 是否使用TLS安全传输协议
 EMAIL_USE_SSL = False    # 是否使用SSL加密，qq企业邮箱要求使用
+
+import djcelery
+
+djcelery.setup_loader()
+
+BROKER_HOST = "localhost"
+BROKER_PORT = 5672
+BROKER_USER = "guest"
+BROKER_PASSWORD = "guest"
+BROKER_VHOST = "/"
+
+from kombu import serialization
+serialization.registry._decoders.pop("application/x-python-serialize")

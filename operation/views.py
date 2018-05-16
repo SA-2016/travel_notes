@@ -1,4 +1,4 @@
-from travel_notes.function import *
+from travel_notes.tasks import *
 from .models import Like
 
 from django.shortcuts import render
