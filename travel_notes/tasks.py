@@ -2,6 +2,7 @@ from article.models import Article
 from user.models import User
 from celery import shared_task
 from django.conf import settings
+from operation.models import Like
 
 from django.http import HttpResponse
 
@@ -38,6 +39,17 @@ def create_session_time(request,email):
     user.session_time = session_time + 3600
     user.session = request.COOKIES.get('sessionid', '')
     user.save()
+
+
+@shared_task
+def recommend(request):
+    pass
+
+
+@shared_task
+def statistics(request,email):
+    user = User.objects.get(email=email).id
+    like = Like.objects.filter(userLike_id=user).latest('id')
 
 
 

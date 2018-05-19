@@ -18,7 +18,6 @@ $(function(){
               document.getElementById('change_like').value = json_key.key;
                 },
           error:function(){
-                alert('网络不畅');
                 }
 });
 
@@ -41,6 +40,18 @@ $(function(){
       {% else %}
           <input  id="sys" type="button" value="文章不错，点个赞吧！" name="'change_like'">
       {% endif %}
+      <br>
+      {% if or_like %}
+          <h4>相似文章推荐：</h4>
+          {% for foo in or_like %}
+              <a href="{% url 'article:id' foo.id %}">{{ foo.title }}</a><br>
+
+          {% endfor %}
+      {% else %}
+
+      {% endif %}
+
+
 
       </div>
 

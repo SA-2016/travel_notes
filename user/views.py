@@ -80,8 +80,8 @@ def user_info(request, email, user_id):
     context = {'writer_info': User.objects.get(id=user_id),
                'art_list': art,
                'email': email,
-               'art_num':art.count()}
-    return render(request, 'user_info.html', context )
+               'art_num': art.count()}
+    return render(request, 'user_info.html', context)
 
 
 @is_login

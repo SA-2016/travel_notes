@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'tinymce',
     'EmailVerifyRecord',
     'crispy_forms',
-    'djcelery'
+    'djcelery',
+    'recommend',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'travel_notes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'thired',
+        'NAME': 'test1',
         'USER': 'root',
         'PASSWORD': '724195301sql',
         'HOST': 'localhost',
@@ -145,14 +146,14 @@ TINYMCE_DEFAULT_CONFIG = { 'theme': 'advanced', 'width': 600, 'height': 400, }
 
 #AUTH_USER_MODEL = 'user.Intuser'
 
-EMAIL_HOST = "smtp.sina.cn"   # 服务器
-EMAIL_PORT = 25               # 一般情况下都为25
-EMAIL_HOST_USER = "xxxx@xx.com"   # 账号
-EMAIL_HOST_PASSWORD = "xxxxxx"  # 密码
-EMAIL_FROM = "xxxxx@xx.com"        # 邮箱来自
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # email后端
-EMAIL_USE_TLS = False   # 是否使用TLS安全传输协议
-EMAIL_USE_SSL = False    # 是否使用SSL加密，qq企业邮箱要求使用
+EMAIL_HOST = "smtp.sina.cn"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_FROM = ""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 
 import djcelery
 

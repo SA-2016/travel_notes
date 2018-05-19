@@ -1,5 +1,7 @@
 from travel_notes.tasks import *
 from .models import Like
+from recommend.models import Recommend
+from recommend.views import Reocmmends
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -15,6 +17,8 @@ def ajax_like(request, email):
         if temp:
             temp.delete()
             art.pop_decrease()
+            recommend = Recommend.objects.get(article=art_id)
+            recommend.all_be_like_decrease(art_id)
             key = '文章不错，点个赞吧！'
         else:
             like = Like()
@@ -22,6 +26,14 @@ def ajax_like(request, email):
             like.userLike_id = user.id
             art.pop_increase()
             like.save()
+            recommend = Recommend.objects.get(article=art_id)
+            if recommend:
+                recommend.all_be_like_increase(art_id)
+            else:
+                new = Recommend()
+                new.article_id = art_id
+                new.all_be_like = str(user.id)
+                new.save()
             key = '已经赞过啦~,点击消赞'
     else:
         key = '非法操作'
